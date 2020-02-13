@@ -1,5 +1,13 @@
-.stage {
-    width: 40%;
-    height: 200px;
-    margin: 50px auto;
+body {
+    background: rgb(36,0,7);
+background: linear-gradient(90deg, rgba(36,0,7,0.7539390756302521) 0%, rgba(171,11,114,0.8435749299719888) 35%, rgba(231,0,255,0.49343487394957986) 100%);
 }
+
+.stage {
+    width: 80%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: white;
+    margin: 5% auto;
+} 

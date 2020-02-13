@@ -35,8 +35,18 @@ fetchCurrentyData = () => {
     })
 }
 
+//Function calcule height
+
+calcHeight = () => {
+    let screenHeight = $(window).height();
+    let element = $(".stage");
+    let elementHeight = screenHeight - 100;
+    element.css("height", elementHeight);
+}
+
 $(document).ready(() => {
     defaultState(); // call the function when the page is reload
+    calcHeight();
     $(".searchBtn").on('click', () => {
         fetchCurrentyData();
     })
