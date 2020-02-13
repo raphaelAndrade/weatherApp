@@ -1,0 +1,23 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch scss -o css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaelAndrade/weatherApp.git"
+  },
+  "author": "Raphael Andrade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raphaelAndrade/weatherApp/issues"
+  },
+  "homepage": "https://github.com/raphaelAndrade/weatherApp#readme",
+  "dependencies": {
+    "node-sass": "^4.13.1"
+  }
+}
