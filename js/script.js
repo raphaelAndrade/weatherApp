@@ -7,7 +7,7 @@ defaultState = () => {
                 return;
             }
             response.json().then(function(data){
-              // console.log(data);
+               console.log(data);
             })
             
             }).catch(function(error){
@@ -36,7 +36,6 @@ fetchCurrentyData = () => {
 }
 
 //Function calcule height
-
 calcHeight = () => {
     let screenHeight = $(window).height();
     let element = $(".stage");
@@ -44,7 +43,18 @@ calcHeight = () => {
     element.css("height", elementHeight);
 }
 
+//Function change Background collor
+changeBackground = () => {
+    $("body").removeClass("nightStorm")
+    let currentWeather = "Clouds";
+
+    if(currentWeather == "Clouds") { /*TODO - change to switch case*/
+       $("body").addClass("nightStorm");
+    }
+}
+
 $(document).ready(() => {
+    changeBackground();
     defaultState(); // call the function when the page is reload
     calcHeight();
     $(".searchBtn").on('click', () => {
