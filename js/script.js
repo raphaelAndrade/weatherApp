@@ -7,7 +7,7 @@ defaultState = () => {
                 return;
             }
             response.json().then(function(data){
-               console.log(data);
+              // console.log(data);
             })
             
             }).catch(function(error){
@@ -16,7 +16,6 @@ defaultState = () => {
 }
 
 //Function to fetch the data when the user click on the buttom
-
 fetchCurrentyData = () => {
     event.preventDefault();
     let currentCity = $("#name").val();
@@ -35,6 +34,18 @@ fetchCurrentyData = () => {
     })
 }
 
+//Function to fetch current hours
+
+getCurrentHours = () => {
+    let lon = null;
+    let lat = null;
+    let url = `http://worldtimeapi.org/api/timezone/America/Argentina/Salta`;
+
+    fetch(url).then((response) => { 
+        console.log("response time" + response);
+    });
+}
+
 //Function calcule height
 calcHeight = () => {
     let screenHeight = $(window).height();
@@ -48,6 +59,7 @@ changeBackground = () => {
     $("body").removeClass("nightStorm")
     let currentWeather = "Clouds";
 
+
     if(currentWeather == "Clouds") { /*TODO - change to switch case*/
        $("body").addClass("nightStorm");
     }
@@ -55,9 +67,12 @@ changeBackground = () => {
 
 $(document).ready(() => {
     changeBackground();
+    getCurrentHours();
     defaultState(); // call the function when the page is reload
     calcHeight();
     $(".searchBtn").on('click', () => {
         fetchCurrentyData();
     })
 });
+
+//http://worldtimeapi.org/
