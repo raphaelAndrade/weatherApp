@@ -1,30 +1,15 @@
-//Function to define the default state
-defaultState = () => {
-    const defaultCity = "Vancouver";           
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&units=imperial&appid=40056036c1703d275c5175eb77a05d0d`).then(function(response){
+//Function Fetch data
+fetchWeather = (city) => {
+    let currentCity = city;
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${currentCity}&units=imperial&appid=40056036c1703d275c5175eb77a05d0d`;
+    
+    fetch(url).then((response) => {
+        if(response.status !== 200) {
             if(response.status == 404) {
-                alert("Hey the city is wrong") 
+                alert("Hey the city ir wrong, Please try again");
                 return;
             }
-            response.json().then(function(data){
-              // console.log(data);
-            })
-            
-            }).catch(function(error){
-                console.log("error" + error);
-            })
-}
-
-//Function to fetch the data when the user click on the buttom
-fetchCurrentyData = () => {
-    event.preventDefault();
-    let currentCity = $("#name").val();
-    console.log(currentCity);
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${currentCity}&units=imperial&appid=40056036c1703d275c5175eb77a05d0d`;
-    fetch(url).then((response) => {
-        let status = response.status;
-        if(status !== 200) {
-            console.log("Please check your response status" + status);
+            console.log(`Error ${response.status}`);
             return;
         }
 
@@ -59,20 +44,20 @@ changeBackground = () => {
     $("body").removeClass("nightStorm")
     let currentWeather = "Clouds";
 
-
     if(currentWeather == "Clouds") { /*TODO - change to switch case*/
        $("body").addClass("nightStorm");
     }
 }
 
 $(document).ready(() => {
-    changeBackground();
-    getCurrentHours();
-    defaultState(); // call the function when the page is reload
     calcHeight();
+    fetchWeather("Vancouver");
     $(".searchBtn").on('click', () => {
-        fetchCurrentyData();
+        let searchCity = $(".searchBtn").val();
+        fetchWeather(searchCity);
     })
 });
+
+
 
 //http://worldtimeapi.org/
